@@ -1,0 +1,26 @@
+{
+  "id": "com.adobe.ai.cocreation.prototype",
+  "name": "AI Co-Creation Studio",
+  "version": "0.1.0",
+  "description": "Prototype Photoshop 24.4 panel that orchestrates AI-assisted generation and editing workflows.",
+  "manifestVersion": 5,
+  "host": [
+    {
+      "app": "PS",
+      "minVersion": "24.4.0"
+    }
+  ],
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "aiCoCreationPanel",
+      "label": "AI Co-Creation",
+      "panel": {
+        "mainPath": "index.html",
+        "preferredDockingTypes": [
+          "panel"
+        ]
+      }
+    }
+  ]
+}

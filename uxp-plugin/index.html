@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AI Co-Creation Studio</title>
+    <link rel="stylesheet" href="https://unpkg.com/@spectrum-web-components/styles/dist/themes/light.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@spectrum-web-components/styles/dist/scale-medium.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="https://unpkg.com/@spectrum-web-components/bundle/elements.js"></script>
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <sp-theme scale="medium" color="light" class="panel-shell">
+      <sp-heading size="L" class="panel-title">AI Co-Creation Studio</sp-heading>
+      <sp-body size="S" class="subtitle">
+        Blend Qwen, Grok, Google Nano Banana, or Meta AI models into Photoshop 24.4 workflows.
+      </sp-body>
+
+      <section class="group">
+        <sp-field-label for="model-picker">Model</sp-field-label>
+        <sp-picker id="model-picker" placeholder="Select a model" value="qwen">
+          <sp-menu>
+            <sp-menu-item value="qwen">Qwen (Alibaba)</sp-menu-item>
+            <sp-menu-item value="nano-banana">Google Nano Banana</sp-menu-item>
+            <sp-menu-item value="grok">xAI Grok</sp-menu-item>
+            <sp-menu-item value="meta">Meta AI</sp-menu-item>
+          </sp-menu>
+        </sp-picker>
+      </section>
+
+      <section class="group">
+        <sp-field-label for="workflow-picker">Workflow</sp-field-label>
+        <sp-picker id="workflow-picker" placeholder="Select a workflow" value="generate">
+          <sp-menu>
+            <sp-menu-item value="generate">Generate new artwork</sp-menu-item>
+            <sp-menu-item value="edit">Edit current selection</sp-menu-item>
+            <sp-menu-item value="expand">Outpaint beyond canvas</sp-menu-item>
+          </sp-menu>
+        </sp-picker>
+      </section>
+
+      <section class="group">
+        <sp-field-label for="prompt-input">Prompt</sp-field-label>
+        <sp-textarea
+          id="prompt-input"
+          placeholder="Describe what you would like to create or modify..."
+          maxlength="500"
+        ></sp-textarea>
+      </section>
+
+      <section class="group row slider-row">
+        <sp-field-label for="strength-slider">Variation strength</sp-field-label>
+        <sp-slider id="strength-slider" min="0" max="100" value="35" variant="tick"></sp-slider>
+        <sp-body size="S" id="strength-value">35%</sp-body>
+      </section>
+
+      <section class="group row">
+        <sp-switch id="seamless-switch" checked>Preserve subject fidelity</sp-switch>
+        <sp-switch id="mask-switch">Respect active mask</sp-switch>
+      </section>
+
+      <section class="group row actions">
+        <sp-button id="refresh-button" variant="secondary">Refresh document info</sp-button>
+        <sp-button id="generate-button" variant="cta">Generate preview</sp-button>
+        <sp-button id="apply-button" variant="accent" disabled>Apply to Photoshop</sp-button>
+      </section>
+
+      <section class="group">
+        <sp-heading size="XS">Preview</sp-heading>
+        <div id="preview-surface">
+          <img id="preview-image" alt="AI preview" hidden />
+          <div id="preview-placeholder">Preview output will appear here.</div>
+        </div>
+      </section>
+
+      <section class="group">
+        <sp-detail size="S" id="status-text">Ready.</sp-detail>
+        <sp-progress-bar id="progress" indeterminate hidden>Processing</sp-progress-bar>
+      </section>
+
+      <section class="group">
+        <sp-heading size="XS">Active document</sp-heading>
+        <sp-body size="S" id="document-info">No Photoshop document detected.</sp-body>
+      </section>
+    </sp-theme>
+  </body>
+</html>
